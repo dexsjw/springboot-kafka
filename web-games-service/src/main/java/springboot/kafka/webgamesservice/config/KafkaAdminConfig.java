@@ -16,6 +16,12 @@ public class KafkaAdminConfig {
     @Value("${spring.kafka.bootstrap-servers}")
     private String bootstrapAddress;
 
+    @Value("${message.topic.name.player-one.moves}")
+    private String topicPlayerOneMoves;
+
+    @Value("${message.topic.name.player-two.moves}")
+    private String topicPlayerTwoMoves;
+
     @Bean
     public KafkaAdmin kafkaAdmin() {
         Map<String, Object> configProps = new HashMap<>();
@@ -24,13 +30,13 @@ public class KafkaAdminConfig {
     }
 
     @Bean
-    public NewTopic playerOneMovesTopic() {
-        return new NewTopic("PlayerOneMoves", 1, (short) 1);
+    public NewTopic topicPlayerOneMoves() {
+        return new NewTopic(topicPlayerOneMoves, 1, (short) 1);
     }
 
     @Bean
-    public NewTopic playerTwoMovesTopic() {
-        return new NewTopic("PlayerTwoMoves", 1, (short) 1);
+    public NewTopic topicPlayerTwoMoves() {
+        return new NewTopic(topicPlayerTwoMoves, 1, (short) 1);
     }
 
     
