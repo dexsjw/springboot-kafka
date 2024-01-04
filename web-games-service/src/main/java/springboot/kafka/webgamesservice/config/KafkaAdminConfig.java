@@ -16,11 +16,14 @@ public class KafkaAdminConfig {
     @Value("${spring.kafka.bootstrap-servers}")
     private String bootstrapAddress;
 
-    @Value("${message.topic.name.player-one.moves}")
-    private String topicPlayerOneMoves;
+    @Value("${message.topic.name.tic-tac-toe.board.state}")
+    private String topicTicTacToeBoardState;
 
-    @Value("${message.topic.name.player-two.moves}")
-    private String topicPlayerTwoMoves;
+    @Value("${message.topic.name.player-one.coordinates}")
+    private String topicPlayerOneCoordinates;
+
+    @Value("${message.topic.name.player-two.coordinates}")
+    private String topicPlayerTwoCoordinates;
 
     @Bean
     public KafkaAdmin kafkaAdmin() {
@@ -30,13 +33,18 @@ public class KafkaAdminConfig {
     }
 
     @Bean
-    public NewTopic topicPlayerOneMoves() {
-        return new NewTopic(topicPlayerOneMoves, 1, (short) 1);
+    public NewTopic topicTicTacToeBoardState() {
+        return new NewTopic(topicTicTacToeBoardState, 1, (short) 1);
     }
 
     @Bean
-    public NewTopic topicPlayerTwoMoves() {
-        return new NewTopic(topicPlayerTwoMoves, 1, (short) 1);
+    public NewTopic topicPlayerOneCoordinates() {
+        return new NewTopic(topicPlayerOneCoordinates, 1, (short) 1);
+    }
+
+    @Bean
+    public NewTopic topicPlayerTwoCoordinates() {
+        return new NewTopic(topicPlayerTwoCoordinates, 1, (short) 1);
     }
 
     
