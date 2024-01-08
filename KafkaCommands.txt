@@ -1,0 +1,11 @@
+#Command to start zookeeper server
+bin/windows/zookeeper-server-start.bat config/zookeeper.properties
+
+#Command to start kafka server / broker
+bin/windows/kafka-server-start.bat config/server.properties
+
+#Command to describe topics
+bin/windows/kafka-topics.bat --describe --topic <topicName> --bootstrap-server localhost:9092
+
+#Command to see Consumer console
+bin/windows/kafka-console-consumer.bat --topic <topicName> --from-beginning --bootstrap-server localhost:9092
