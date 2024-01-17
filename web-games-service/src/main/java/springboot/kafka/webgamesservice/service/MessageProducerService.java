@@ -55,12 +55,13 @@ public class MessageProducerService {
     }
 
     public void sendMessageTicTacToeBoardState(TicTacToeBoardState tttBoardState) {
+        
         CompletableFuture<SendResult<String, TicTacToeBoardState>> future = ticTacToeBoardStateKafkaTemplate.send(topicTicTacToeBoardState, tttBoardState);
         future.whenComplete((result, ex) -> {
             if (ex == null) {
                 log.info("Sending message...");
                 log.info("Message content: ");
-                tttBoardState.displayBoardCoordinates();
+                tttBoardState.printBoardCoordinates();
                 log.info(String.format("Message offset: %d", result.getRecordMetadata().offset()));
             } else {
                 log.info("Failed to send message...");
