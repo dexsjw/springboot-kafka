@@ -23,10 +23,7 @@ public class TicTacToeController {
 
     @PostMapping(path = "/board/state", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> sendMessageTicTacToeBoardState(@RequestBody TicTacToeBoardState ticTacToeBoardState) {
-        for (BoardCoordinate coordinate : ticTacToeBoardState.getBoardCoordinates()) {
-            log.info(coordinate.getColumn());
-            log.info(coordinate.getRow());
-        }
+        ticTacToeBoardState.printBoardCoordinates();
         messageProducerService.sendMessageTicTacToeBoardState(ticTacToeBoardState);
         return ResponseEntity.ok("Tic-Tac-Toe board state successfully sent!");
     }
