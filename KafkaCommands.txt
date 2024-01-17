@@ -6,6 +6,8 @@ bin/windows/kafka-server-start.bat config/server.properties
 
 #Command to describe topics
 bin/windows/kafka-topics.bat --describe --topic <topicName> --bootstrap-server localhost:9092
+bin/windows/kafka-topics.bat --describe --topic TicTacToeBoardState --bootstrap-server localhost:9092
 
 #Command to see Consumer console
 bin/windows/kafka-console-consumer.bat --topic <topicName> --from-beginning --bootstrap-server localhost:9092
+bin/windows/kafka-console-consumer.bat --topic TicTacToeBoardState --from-beginning --bootstrap-server localhost:9092
