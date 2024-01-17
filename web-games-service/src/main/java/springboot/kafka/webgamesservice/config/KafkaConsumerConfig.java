@@ -50,7 +50,10 @@ public class KafkaConsumerConfig {
          configProps.put(ConsumerConfig.GROUP_ID_CONFIG, groupIdTicTacToe);
          configProps.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
          configProps.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
-         return new DefaultKafkaConsumerFactory<>(configProps);
+         DefaultKafkaConsumerFactory<String, TicTacToeBoardState> consumerFactory = new DefaultKafkaConsumerFactory<>(configProps);
+         consumerFactory.setValueDeserializer(new JsonDeserializer<>(TicTacToeBoardState.class));
+         return consumerFactory;
+        //  return new DefaultKafkaConsumerFactory<>(configProps);
     }
 
     @Bean
